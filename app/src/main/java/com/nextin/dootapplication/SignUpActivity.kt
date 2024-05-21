@@ -1,5 +1,6 @@
 package com.nextin.dootapplication
 
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,15 +25,21 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding?.root)
         auth = Firebase.auth
 
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Creating Account")
+        progressDialog.setMessage("we are creating account")
+
         val database = Firebase.database
 
         binding?.btnSignup?.setOnClickListener {
+            progressDialog.show()
             auth.createUserWithEmailAndPassword(
                 binding?.etEmail?.text.toString(),
                 binding?.etPassword?.text.toString()
             ).addOnCompleteListener(OnCompleteListener
             { task ->
                 if (task.isSuccessful) {
+                    progressDialog.dismiss()
                     val user = User(binding?.etUsername?.text.toString(),
                         binding?.etEmail?.text.toString(),binding?.etPassword?.text.toString())
                    val id = task.result.user?.uid
