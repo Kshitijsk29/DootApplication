@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "820308703778",
+    "project_id": "dootapplication-599fb",
+    "storage_bucket": "dootapplication-599fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820308703778:android:a46317b9e24dc91f2b687b",
+        "android_client_info": {
+          "package_name": "com.nextin.dootapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG72kDCt04tTc5PlPBLacHNvttFDFuqHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

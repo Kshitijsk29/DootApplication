@@ -30,24 +30,22 @@
             android:src="@drawable/whatsapp" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@color/white"
-            android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="@string/username"
-            android:inputType="text"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:padding="10dp" />
 
 
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
@@ -59,7 +57,7 @@
             android:padding="10dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvClickSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,7 +69,7 @@
             android:textStyle="italic" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -90,7 +88,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnGoogle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
@@ -101,7 +99,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnFacebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -112,7 +110,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvSignupwithphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
