@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.DootApplication" parent="Base.Theme.DootApplication" />
+
+    <style name="ToolbarExercise" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
 </resources>

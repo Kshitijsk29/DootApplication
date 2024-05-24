@@ -1,6 +1,7 @@
 package com.nextin.dootapplication
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -38,11 +39,17 @@ class SignUpActivity : AppCompatActivity() {
                 binding?.etPassword?.text.toString()
             ).addOnCompleteListener(OnCompleteListener
             { task ->
+                progressDialog.dismiss()
                 if (task.isSuccessful) {
-                    progressDialog.dismiss()
+
                     val user = User(binding?.etUsername?.text.toString(),
                         binding?.etEmail?.text.toString(),binding?.etPassword?.text.toString())
-                   val id = task.result.user?.uid
+
+                    val intent = Intent(this@SignUpActivity ,
+                        SignInActivity::class.java)
+                    startActivity(intent)
+
+                    val id = task.result.user?.uid
                     if (id != null) {
                         database.reference.child("Users").child(id).setValue(user)
                     }
@@ -58,5 +65,16 @@ class SignUpActivity : AppCompatActivity() {
                 }
             })
         }
+
+        binding?.tvAlreadyHaveAccount!!.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                val intent = Intent(this@SignUpActivity,
+                    SignInActivity::class.java)
+
+                startActivity(intent)
+            }
+
+        })
+
     }
-    }
+}

@@ -69,7 +69,7 @@
             android:textStyle="italic" />
 
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
