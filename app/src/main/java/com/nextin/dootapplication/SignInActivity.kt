@@ -155,31 +155,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
 
-//    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-//        result ->
-//        if(result.resultCode== RC_SIGN_IN ){
-//
-//            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-//            if (task.isSuccessful){
-//                    val account : GoogleSignInAccount? = null
-//                val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-//                auth.signInWithCredential(credential).addOnCompleteListener{
-//                    if (it.isSuccessful){
-//                        Toast.makeText(this, " Sign in Done", Toast.LENGTH_LONG)
-//
-//                        startActivity(Intent(this, MainActivity::class.java))
-//                    }
-//                    else{
-//                        Toast.makeText(this, " Sign in failed", Toast.LENGTH_LONG)
-//                    }
-//                }
-//            }
-//        }
-//        else{
-//            Toast.makeText(this, "failed", Toast.LENGTH_LONG).show()
-//        }
-//
-//    }
     }
 
 }
