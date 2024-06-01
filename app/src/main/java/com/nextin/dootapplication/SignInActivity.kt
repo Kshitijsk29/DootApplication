@@ -1,28 +1,24 @@
 package com.nextin.dootapplication
 
-import android.app.Activity
+
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.database.core.utilities.Utilities
 import com.nextin.dootapplication.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
@@ -52,38 +48,46 @@ class SignInActivity : AppCompatActivity() {
 
         binding?.btnGoogle?.setOnClickListener {
             val signInClient = googleSignInClient.signInIntent
-
+            signIn()
         }
+        val email = binding?.etEmail?.text.toString()
+       val pass = binding?.etPassword?.text.toString()
 
         binding?.btnSignIn?.setOnClickListener {
-            progressDialog.show()
-            auth.signInWithEmailAndPassword(
-                binding?.etEmail?.text.toString(),
-                binding?.etPassword?.text.toString()
-            ).addOnCompleteListener { task ->
-                progressDialog.dismiss()
-                if (task.isSuccessful) {
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)) {
+                Toast.makeText(this,
+                    "Please Fill the credentials",
+                    Toast.LENGTH_LONG).show()
+            }
+            else if(pass.length<8){
+                Toast.makeText(this,
+                    "Password is too short ",
+                    Toast.LENGTH_LONG).show()
+            }
+            else{
+                progressDialog.show()
+                auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener { task ->
+                    progressDialog.dismiss()
+                    if (task.isSuccessful) {
 
-                    val intent = Intent(this@SignInActivity, MainActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        task.exception?.message,
-                        Toast.LENGTH_LONG
-                    ).show()
+                        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(
+                            this@SignInActivity,
+                            task.exception?.message,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
                 }
-
             }
         }
 
-        binding?.tvClickSignup?.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
-                startActivity(intent)
-            }
-
-        })
+        binding?.tvClickSignup?.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
+            startActivity(intent)
+        }
 
         if (auth.currentUser != null) {
 
@@ -153,8 +157,5 @@ class SignInActivity : AppCompatActivity() {
                 Log.d(TAG, "No ID token!")
             }
         }
-
-
     }
-
 }

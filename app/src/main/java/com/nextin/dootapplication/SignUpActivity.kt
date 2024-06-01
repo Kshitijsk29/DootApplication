@@ -33,6 +33,7 @@ class SignUpActivity : AppCompatActivity() {
         val database = Firebase.database
 
         binding?.btnSignup?.setOnClickListener {
+
             progressDialog.show()
             auth.createUserWithEmailAndPassword(
                 binding?.etEmail?.text.toString(),
