@@ -23,12 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding?.toolBarExcerise)
 
-
-
         auth = Firebase.auth
-
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menus, menu)
         return super.onCreateOptionsMenu(menu)
