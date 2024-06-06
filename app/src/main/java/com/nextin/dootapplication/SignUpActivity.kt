@@ -40,7 +40,6 @@ class SignUpActivity : AppCompatActivity() {
                 ).addOnCompleteListener(OnCompleteListener
                 { task ->
                     progressDialog.dismiss()
-
                     if (task.isSuccessful) {
 
                         val user = User(binding?.etUsername?.text.toString(), binding?.etEmail?.text.toString(),
@@ -55,9 +54,9 @@ class SignUpActivity : AppCompatActivity() {
                             this@SignUpActivity,
                             "Account Sign Up is Successful", Toast.LENGTH_LONG
                         ).show()
-                        val intent = Intent(this@SignUpActivity ,SignInActivity::class.java)
-                        startActivity(intent)
 
+                        val intent = Intent(this, SignInActivity::class.java)
+                        startActivity(intent)
 
                     } else {
                         Toast.makeText(
